@@ -36,11 +36,15 @@ request(`https://drive.google.com/uc?authuser=0&id=1q_ULyEjTROu7cLpwIa0FVjDWsgZ9
                     if(answer === 'y') {
                         entry.pipe(fs.createWriteStream(fileName))
                     }
+                    else {
+                        entry.autodrain()
+                    }
                     rl.close()
                 })
             }
             else if (entry.type === 'Directory' && fileName.includes('kpay')) {
                 mkdirp.sync(projectDir + '/' + fileName)
+                entry.autodrain()
             }
             else if (entry.type === 'File' && fileName.includes("kpay")) {
                 entry.pipe(fs.createWriteStream(fileName))
