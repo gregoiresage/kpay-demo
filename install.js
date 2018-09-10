@@ -27,7 +27,7 @@ request(`https://drive.google.com/uc?authuser=0&id=1q_ULyEjTROu7cLpwIa0FVjDWsgZ9
         response.pipe(unzip.Parse())
         .on('entry', (entry) => {
             var fileName = entry.path
-            if (fileName === 'app/kpay/kpay_config.js') {
+            if (fileName === 'app/kpay/kpay_config.js' && fs.existsSync(projectDir + '/' + fileName)) {
                 const rl = readline.createInterface({
                     input: process.stdin,
                     output: process.stdout
