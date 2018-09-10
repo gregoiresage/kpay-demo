@@ -32,7 +32,7 @@ request(`https://drive.google.com/uc?authuser=0&id=1q_ULyEjTROu7cLpwIa0FVjDWsgZ9
                     input: process.stdin,
                     output: process.stdout
                 })
-                rl.question('Do you want to overwrite your existing app/kpay/kpay_config.js file? (N/y) ', (answer) => {
+                rl.question('Do you want to overwrite your existing app/kpay/kpay_config.js? (y/N) ', (answer) => {
                     if(answer === 'y') {
                         entry.pipe(fs.createWriteStream(fileName))
                     }
